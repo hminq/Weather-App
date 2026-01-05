@@ -47,6 +47,7 @@ dependencies {
     implementation("androidx.datastore:datastore-preferences:1.0.0")
     //Hilt for DI
     implementation("com.google.dagger:hilt-android:2.57.1")
+    implementation(libs.androidx.activity)
     ksp("com.google.dagger:hilt-android-compiler:2.57.1")
     // Moshi for JSON parsing
     implementation(libs.converter.moshi)
