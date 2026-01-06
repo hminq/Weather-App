@@ -12,7 +12,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:src="@drawable/ic_humidity"/>
+        android:src="@drawable/ic_humidity"
+        android:tint="?attr/colorOnSurfaceVariant"/>
 
     <TextView
         android:id="@+id/tvHumidity"
@@ -33,6 +34,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:text="Humidity"
-        android:textSize="10sp"/>
+        android:textSize="10sp"
+        android:textColor="?attr/colorOnSurfaceVariant"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

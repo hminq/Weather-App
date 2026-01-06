@@ -1,219 +1,226 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".presentation.WeatherFragment">
-
-    <TextView
-        android:id="@+id/tvCountry"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:text="Vietnam,"
-        android:textSize="15sp"
-        android:textColor="?attr/colorSecondary"
-        android:layout_margin="16dp"/>
-
-    <TextView
-        android:id="@+id/tvCity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hanoi City"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:textColor="?attr/colorPrimary"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvCountry"
-        android:layout_marginStart="16dp"/>
-
-    <Button
-        android:id="@+id/btnSetting"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/tvCountry"
-        app:layout_constraintBottom_toBottomOf="@id/tvCity"
-        android:layout_marginEnd="16dp"
-        app:backgroundTint="@null"
-        android:background="@drawable/ic_setting"
-        android:rotation="270"/>
-
-    <!-- Current Weather Card -->
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardCurrentWeather"
+<layout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/tvCity"
-        app:layout_constraintBottom_toTopOf="@id/topGuildline"
-        android:layout_marginTop="30dp"
-        android:layout_marginHorizontal="16dp"
-        app:cardBackgroundColor="?attr/colorSurface"
-        app:cardCornerRadius="15dp">
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        tools:context=".presentation.WeatherFragment">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <TextView
+            android:id="@+id/tvCountry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="Vietnam,"
+            android:textSize="15sp"
+            android:textColor="?attr/colorOnSurfaceVariant"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="40dp"/>
+
+        <TextView
+            android:id="@+id/tvCity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hanoi City"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="?attr/colorOnBackground"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvCountry"
+            android:layout_marginStart="16dp"/>
+
+        <Button
+            android:id="@+id/btnSetting"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tvCountry"
+            app:layout_constraintBottom_toBottomOf="@id/tvCity"
+            android:layout_marginEnd="16dp"
+            app:backgroundTint="@null"
+            android:background="@drawable/ic_setting"
+            android:backgroundTint="?attr/colorOnSurfaceVariant"
+            android:rotation="270"/>
+
+        <!-- Current Weather Card -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardCurrentWeather"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingHorizontal="24dp"
-            android:paddingVertical="16dp">
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tvCity"
+            app:layout_constraintBottom_toTopOf="@id/topGuildline"
+            android:layout_marginTop="30dp"
+            android:layout_marginHorizontal="16dp"
+            app:cardBackgroundColor="?attr/colorSurface"
+            app:cardCornerRadius="15dp">
 
-            <!-- Current Time text -->
-            <TextView
-                android:id="@+id/tvCurrentTime"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                android:text="25 January 2004"
-                android:textColor="?attr/colorSecondary"
-                android:textSize="12sp"/>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingHorizontal="24dp"
+                android:paddingVertical="16dp">
 
-            <!-- Current Weather Condition text -->
-            <TextView
-                android:id="@+id/tvCurrentCondition"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/tvCurrentTime"
-                app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginTop="4dp"
-                android:text="Cloudy as fuck"
-                android:textColor="?attr/colorPrimary"
-                android:textSize="15sp"/>
+                <!-- Current Time text -->
+                <TextView
+                    android:id="@+id/tvCurrentTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:text="25 January 2004"
+                    android:textColor="?attr/colorOnSurfaceVariant"
+                    android:textSize="12sp"/>
 
-            <!-- Current Temperature text -->
-            <TextView
-                android:id="@+id/tvCurrentTemp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/tvCurrentCondition"
-                app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginTop="6dp"
-                android:text="18°C"
-                android:textColor="?attr/colorPrimary"
-                android:textSize="50sp"/>
+                <!-- Current Weather Condition text -->
+                <TextView
+                    android:id="@+id/tvCurrentCondition"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/tvCurrentTime"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginTop="4dp"
+                    android:text="Cloudy as fuck"
+                    android:textColor="?attr/colorOnSurface"
+                    android:textSize="15sp"/>
 
-            <ImageView
-                android:id="@+id/ivCondition"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:layout_marginHorizontal="16dp"
-                android:contentDescription="@string/app_name"
-                android:src="@drawable/ic_cloudy"/>
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
+                <!-- Current Temperature text -->
+                <TextView
+                    android:id="@+id/tvCurrentTemp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/tvCurrentCondition"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginTop="6dp"
+                    android:text="18°C"
+                    android:textStyle="bold"
+                    android:textColor="?attr/colorOnSurface"
+                    android:textSize="50sp"/>
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/topGuildline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.35"/>
+                <ImageView
+                    android:id="@+id/ivCondition"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/tvCurrentCondition"
+                    app:layout_constraintBottom_toBottomOf="@id/tvCurrentTemp"
+                    android:layout_marginHorizontal="16dp"
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/ic_cloudy"
+                    android:tint="?attr/colorOnSurfaceVariant"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
 
-    <!-- Current Temperature Info -->
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardWeatherInfo"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/topGuildline"
-        app:layout_constraintBottom_toTopOf="@id/midGuildline"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginVertical="8dp"
-        app:cardCornerRadius="16dp"
-        app:cardBackgroundColor="?attr/colorSurface">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/topGuildline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:weightSum="3"
-            android:paddingVertical="12dp">
+            app:layout_constraintGuide_percent="0.35"/>
 
-            <include
-                layout="@layout/item_wind_speed"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"/>
+        <!-- Current Temperature Info -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardWeatherInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/topGuildline"
+            app:layout_constraintBottom_toTopOf="@id/midGuildline"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginVertical="16dp"
+            app:cardCornerRadius="16dp"
+            app:cardBackgroundColor="?attr/colorSurface">
 
-            <include
-                layout="@layout/item_humidity"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="3"
+                android:paddingVertical="16dp">
 
-            <include
-                layout="@layout/item_rain"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"/>
-        </LinearLayout>
+                <include
+                    layout="@layout/item_wind_speed"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
 
-    </androidx.cardview.widget.CardView>
+                <include
+                    layout="@layout/item_humidity"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/midGuildline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.5"/>
+                <include
+                    layout="@layout/item_rain"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+            </LinearLayout>
 
-    <androidx.constraintlayout.helper.widget.Flow
-        android:id="@+id/flowOptions"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/midGuildline"
-        android:layout_margin="16dp"
-        app:constraint_referenced_ids="tvToday, tvTomorrow, tvThisWeek"
-        app:flow_wrapMode="chain"
-        app:flow_horizontalGap="12dp"/>
+        </androidx.cardview.widget.CardView>
 
-    <TextView
-        android:id="@+id/tvToday"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Today"
-        android:textColor="?attr/colorPrimary"/>
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/midGuildline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.48"/>
 
-    <TextView
-        android:id="@+id/tvTomorrow"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Tomorrow"
-        android:textColor="?attr/colorSecondary"/>
+        <androidx.constraintlayout.helper.widget.Flow
+            android:id="@+id/flowOptions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/midGuildline"
+            android:layout_margin="16dp"
+            app:constraint_referenced_ids="tvToday, tvTomorrow, tvThisWeek"
+            app:flow_wrapMode="chain"
+            app:flow_horizontalGap="12dp"/>
 
-    <TextView
-        android:id="@+id/tvThisWeek"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="This week"
-        android:textColor="?attr/colorSecondary"/>
+        <TextView
+            android:id="@+id/tvToday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Today"
+            android:textStyle="bold"
+            android:textColor="?attr/colorOnBackground"/>
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/bottomGuildline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.7"/>
+        <TextView
+            android:id="@+id/tvTomorrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tomorrow"
+            android:textColor="?attr/colorOnSurfaceVariant"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvWeatherPrediction"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/flowOptions"
-        app:layout_constraintBottom_toTopOf="@id/bottomGuildline"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginVertical="8dp"
-        android:orientation="horizontal"
-        app:backgroundTint="@android:color/transparent"
-        tools:listitem="@layout/item_hourly_weather"
-        tools:itemCount="5"
-        tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/tvThisWeek"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="This week"
+            android:textColor="?attr/colorOnSurfaceVariant"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/bottomGuildline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.65"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvWeatherPrediction"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toBottomOf="@id/flowOptions"
+            app:layout_constraintBottom_toTopOf="@id/bottomGuildline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginVertical="8dp"
+            android:orientation="horizontal"
+            app:backgroundTint="@android:color/transparent"
+            tools:listitem="@layout/item_hourly_weather"
+            tools:itemCount="5"
+            tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
