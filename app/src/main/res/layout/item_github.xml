@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:clickable="true"
+    android:focusable="true">
+
+    <ImageView
+        android:id="@+id/ivGithub"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:src="@drawable/ic_github"
+        android:padding="6dp"
+        android:background="@drawable/bg_setting_icon"
+        android:tint="?attr/colorPrimary"/>
+
+    <androidx.constraintlayout.helper.widget.Flow
+        android:id="@+id/flowGithub"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/ivGithub"
+        app:layout_constraintStart_toEndOf="@id/ivGithub"
+        app:layout_constraintBottom_toBottomOf="@id/ivGithub"
+        android:layout_marginStart="16dp"
+        android:orientation="vertical"
+        app:flow_horizontalAlign="start"
+        app:constraint_referenced_ids="tvGithubTitle, tvGithubValue"/>
+
+    <TextView
+        android:id="@+id/tvGithubTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Github"
+        android:textColor="?attr/colorOnSurfaceVariant"
+        android:textSize="12sp"/>
+
+    <TextView
+        android:id="@+id/tvGithubValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="\@hminq"
+        android:textColor="?attr/colorOnSurface"
+        android:textSize="15sp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
