@@ -6,8 +6,8 @@
 
     <ImageView
         android:id="@+id/ivWindSpeed"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
+        android:layout_width="@dimen/small_icon_size"
+        android:layout_height="@dimen/small_icon_size"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,7 +23,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="6dp"
         android:text="10 m/s"
-        android:textColor="?attr/colorOnSurface"/>
+        android:textColor="?attr/colorOnSurface"
+        android:textSize="@dimen/body1_text_size"/>
 
     <TextView
         android:id="@+id/tvTitle"
@@ -33,6 +34,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:text="Wind"
-        android:textSize="10sp"
+        android:textSize="@dimen/label3_text_size"
         android:textColor="?attr/colorOnSurfaceVariant"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

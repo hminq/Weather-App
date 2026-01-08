@@ -1,23 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".presentation.SettingFragment">
+        tools:context=".presentation.SettingFragment"
+        android:padding="@dimen/screen_padding">
 
-        <Button
+        <ImageButton
             android:id="@+id/btnBack"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="40dp"
-            app:backgroundTint="@null"
-            android:background="@drawable/ic_arrow_left"
-            android:backgroundTint="?attr/colorOnSurfaceVariant" />
+            android:layout_marginTop="32dp"
+            android:src="@drawable/ic_arrow_left"
+            android:scaleType="centerInside"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:backgroundTint="?attr/colorOnSurfaceVariant"
+            android:padding="@dimen/button_image_padding"/>
 
         <TextView
             android:id="@+id/tvTitle"
@@ -26,10 +29,10 @@
             app:layout_constraintTop_toTopOf="@id/btnBack"
             app:layout_constraintBottom_toBottomOf="@id/btnBack"
             app:layout_constraintStart_toEndOf="@id/btnBack"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="@dimen/far_margin"
             android:text="Settings"
             android:textStyle="bold"
-            android:textSize="20sp"
+            android:textSize="@dimen/title2_text_size"
             android:textColor="?attr/colorOnBackground" />
 
         <TextView
@@ -38,9 +41,9 @@
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvTitle"
-            android:layout_margin="16dp"
+            android:layout_marginTop="@dimen/far_margin"
             android:text="General"
-            android:textSize="15sp"
+            android:textSize="@dimen/title1_text_size"
             android:textColor="?attr/colorOnBackground" />
 
         <androidx.cardview.widget.CardView
@@ -48,122 +51,29 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/tvGeneralTitle"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginVertical="8dp"
+            android:layout_marginVertical="@dimen/close_margin"
             app:cardBackgroundColor="?attr/colorSurface"
-            app:cardCornerRadius="15dp">
+            app:cardCornerRadius="@dimen/card_padding">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:padding="16dp">
+                android:padding="@dimen/card_padding"
+                android:orientation="vertical"
+                android:divider="@drawable/space_divider"
+                android:showDividers="middle">
 
-                <View
-                    android:id="@+id/generalDivider"
+                <include
+                    layout="@layout/item_language"
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="?attr/colorOnSurfaceVariant"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent" />
+                    android:layout_height="wrap_content"/>
 
-                <ImageView
-                    android:id="@+id/ivLanguage"
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toTopOf="@id/generalDivider"
-                    android:layout_marginBottom="16dp"
-                    android:src="@drawable/ic_globe"
-                    android:padding="6dp"
-                    android:background="@drawable/bg_setting_icon"
-                    app:tint="?attr/colorPrimary" />
+                <include
+                    layout="@layout/item_theme"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
 
-                <TextView
-                    android:id="@+id/tvLanguage"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintStart_toEndOf="@id/ivLanguage"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toTopOf="@id/generalDivider"
-                    android:layout_marginBottom="16dp"
-                    android:layout_marginStart="16dp"
-                    android:text="Language"
-                    android:textColor="?attr/colorOnSurface"
-                    android:textSize="15sp" />
-
-                <TextView
-                    android:id="@+id/tvLanguageValue"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toTopOf="@id/generalDivider"
-                    app:layout_constraintEnd_toStartOf="@id/ivArrow1"
-                    android:layout_marginBottom="16dp"
-                    android:layout_marginEnd="8dp"
-                    android:text="English"
-                    android:textColor="?attr/colorOnSurfaceVariant" />
-
-                <ImageView
-                    android:id="@+id/ivArrow1"
-                    android:layout_width="16dp"
-                    android:layout_height="16dp"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toTopOf="@id/generalDivider"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:layout_marginBottom="16dp"
-                    android:src="@drawable/ic_arrow_right"
-                    app:tint="?attr/colorOnSurfaceVariant" />
-
-                <ImageView
-                    android:id="@+id/ivTheme"
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/generalDivider"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    android:layout_marginTop="16dp"
-                    android:src="@drawable/ic_lightmode"
-                    android:padding="6dp"
-                    android:background="@drawable/bg_setting_icon"
-                    app:tint="?attr/colorPrimary" />
-
-                <TextView
-                    android:id="@+id/tvTheme"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintStart_toEndOf="@id/ivTheme"
-                    app:layout_constraintTop_toBottomOf="@id/generalDivider"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginStart="16dp"
-                    android:text="Theme"
-                    android:textColor="?attr/colorOnSurface"
-                    android:textSize="15sp" />
-
-                <TextView
-                    android:id="@+id/tvThemeValue"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@id/generalDivider"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/ivArrow2"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginTop="16dp"
-                    android:text="Light"
-                    android:textColor="?attr/colorOnSurfaceVariant" />
-
-                <ImageView
-                    android:id="@+id/ivArrow2"
-                    android:layout_width="16dp"
-                    android:layout_height="16dp"
-                    app:layout_constraintTop_toBottomOf="@id/generalDivider"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:layout_marginTop="16dp"
-                    android:src="@drawable/ic_arrow_right"
-                    app:tint="?attr/colorOnSurfaceVariant" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
         </androidx.cardview.widget.CardView>
 
         <TextView
@@ -172,9 +82,9 @@
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/cardGeneral"
-            android:layout_margin="16dp"
+            android:layout_marginTop="@dimen/far_margin"
             android:text="Unit of measurement"
-            android:textSize="15sp"
+            android:textSize="@dimen/title1_text_size"
             android:textColor="?attr/colorOnBackground" />
 
         <androidx.cardview.widget.CardView
@@ -182,76 +92,29 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/tvUnitTitle"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginVertical="8dp"
+            android:layout_marginVertical="@dimen/close_margin"
             app:cardBackgroundColor="?attr/colorSurface"
-            app:cardCornerRadius="15dp">
+            app:cardCornerRadius="@dimen/card_corner_radius">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:padding="16dp">
+                android:padding="@dimen/card_padding"
+                android:orientation="vertical"
+                android:divider="@drawable/space_divider"
+                android:showDividers="middle">
 
-                <View
-                    android:id="@+id/unitDivider"
+                <include
+                    layout="@layout/item_windspeed"
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="?attr/colorOnSurfaceVariant"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent" />
+                    android:layout_height="wrap_content"/>
 
-                <ImageView
-                    android:id="@+id/ivWindSpeed"
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toTopOf="@id/unitDivider"
-                    android:layout_marginBottom="16dp"
-                    android:src="@drawable/ic_wind"
-                    android:padding="6dp"
-                    android:background="@drawable/bg_setting_icon"
-                    app:tint="?attr/colorPrimary" />
+                <include
+                    layout="@layout/item_temperature"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
 
-                <TextView
-                    android:id="@+id/tvWindSpeed"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintStart_toEndOf="@id/ivWindSpeed"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toTopOf="@id/unitDivider"
-                    android:layout_marginBottom="16dp"
-                    android:layout_marginStart="16dp"
-                    android:text="Wind Speed"
-                    android:textColor="?attr/colorOnSurface"
-                    android:textSize="15sp" />
-
-                <ImageView
-                    android:id="@+id/ivTemp"
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/unitDivider"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    android:layout_marginTop="16dp"
-                    android:src="@drawable/ic_temp"
-                    android:padding="6dp"
-                    android:background="@drawable/bg_setting_icon"
-                    app:tint="?attr/colorPrimary" />
-
-                <TextView
-                    android:id="@+id/tvTemp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintStart_toEndOf="@id/ivTemp"
-                    app:layout_constraintTop_toBottomOf="@id/unitDivider"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginStart="16dp"
-                    android:text="Temperature"
-                    android:textColor="?attr/colorOnSurface"
-                    android:textSize="15sp" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
         </androidx.cardview.widget.CardView>
 
         <TextView
@@ -260,9 +123,9 @@
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/cardUnit"
-            android:layout_margin="16dp"
+            android:layout_marginTop="@dimen/far_margin"
             android:text="About"
-            android:textSize="15sp"
+            android:textSize="@dimen/title1_text_size"
             android:textColor="?attr/colorOnBackground" />
 
         <androidx.cardview.widget.CardView
@@ -270,98 +133,29 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/tvInfoTitle"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginVertical="8dp"
+            android:layout_marginVertical="@dimen/close_margin"
             app:cardBackgroundColor="?attr/colorSurface"
-            app:cardCornerRadius="15dp">
+            app:cardCornerRadius="@dimen/card_corner_radius">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:padding="16dp">
+                android:padding="@dimen/card_padding"
+                android:orientation="vertical"
+                android:divider="@drawable/space_divider"
+                android:showDividers="middle">
 
-                <View
-                    android:id="@+id/infoDivider"
+                <include
+                    layout="@layout/item_version"
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="?attr/colorOnSurfaceVariant"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent" />
+                    android:layout_height="wrap_content"/>
 
-                <ImageView
-                    android:id="@+id/ivVersion"
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toTopOf="@id/infoDivider"
-                    android:src="@drawable/ic_info"
-                    android:padding="6dp"
-                    android:layout_marginBottom="16dp"
-                    android:background="@drawable/bg_setting_icon"
-                    app:tint="?attr/colorPrimary" />
+                <include
+                    layout="@layout/item_contact"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
 
-                <TextView
-                    android:id="@+id/tvVersion"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintStart_toEndOf="@id/ivVersion"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toTopOf="@id/infoDivider"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginBottom="16dp"
-                    android:text="Version"
-                    android:textColor="?attr/colorOnSurface"
-                    android:textSize="15sp"/>
-
-                <TextView
-                    android:id="@+id/tvVersionValue"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toTopOf="@id/infoDivider"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:layout_marginBottom="16dp"
-                    android:text="v1.0.0"
-                    android:textColor="?attr/colorOnSurfaceVariant"/>
-
-                <ImageView
-                    android:id="@+id/ivConnect"
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/infoDivider"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    android:src="@drawable/ic_share"
-                    android:padding="6dp"
-                    android:layout_marginTop="16dp"
-                    android:background="@drawable/bg_setting_icon"
-                    app:tint="?attr/colorPrimary"/>
-
-                <TextView
-                    android:id="@+id/tvConnect"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintStart_toEndOf="@id/ivVersion"
-                    app:layout_constraintTop_toBottomOf="@id/infoDivider"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:text="Contact us"
-                    android:textColor="?attr/colorOnSurface"
-                    android:textSize="15sp"/>
-
-                <ImageView
-                    android:layout_width="16dp"
-                    android:layout_height="16dp"
-                    app:layout_constraintTop_toBottomOf="@id/infoDivider"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:layout_marginTop="16dp"
-                    android:src="@drawable/ic_arrow_right"
-                    app:tint="?attr/colorOnSurfaceVariant"/>
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
         </androidx.cardview.widget.CardView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
