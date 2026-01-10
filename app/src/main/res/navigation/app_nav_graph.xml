@@ -16,12 +16,16 @@
     </fragment>
     <fragment
         android:id="@+id/settingFragment"
-        android:name="hminq.dev.weatherapp.presentation.SettingFragment"
+        android:name="hminq.dev.weatherapp.presentation.settings.SettingFragment"
         android:label="fragment_setting"
         tools:layout="@layout/fragment_setting" >
         <action
-            android:id="@+id/action_settingFragment_to_weatherFragment"
-            app:destination="@id/weatherFragment"
-            app:popUpToInclusive="true"/>
+            android:id="@+id/action_settingFragment_to_contactFragment"
+            app:destination="@id/contactFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/contactFragment"
+        android:name="hminq.dev.weatherapp.presentation.ContactFragment"
+        android:label="ContactFragment"
+        tools:layout="@layout/fragment_contact"/>
 </navigation>
