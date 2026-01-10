@@ -1,41 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <ImageView
-        android:id="@+id/ivHumidity"
-        android:layout_width="@dimen/small_icon_size"
-        android:layout_height="@dimen/small_icon_size"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:src="@drawable/ic_rainpercent"
-        android:tint="?attr/colorOnSurfaceVariant"/>
+        <ImageView
+            android:id="@+id/ivHumidity"
+            android:layout_width="@dimen/small_icon_size"
+            android:layout_height="@dimen/small_icon_size"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:src="@drawable/ic_rainpercent"
+            app:tint="?attr/colorOnSurfaceVariant"/>
 
-    <TextView
-        android:id="@+id/tvHumidity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/ivHumidity"
-        app:layout_constraintStart_toStartOf="@id/ivHumidity"
-        app:layout_constraintEnd_toEndOf="@id/ivHumidity"
-        android:layout_marginTop="6dp"
-        android:text="67 %"
-        android:textColor="?attr/colorOnSurface"
-        android:textSize="@dimen/body1_text_size"/>
+        <TextView
+            android:id="@+id/tvHumidity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/ivHumidity"
+            app:layout_constraintStart_toStartOf="@id/ivHumidity"
+            app:layout_constraintEnd_toEndOf="@id/ivHumidity"
+            android:layout_marginTop="6dp"
+            android:text="67 %"
+            android:textColor="?attr/colorOnSurface"
+            android:textSize="@dimen/body1_text_size"/>
 
-    <TextView
-        android:id="@+id/tvTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/tvHumidity"
-        app:layout_constraintStart_toStartOf="@+id/tvHumidity"
-        app:layout_constraintEnd_toEndOf="@+id/tvHumidity"
-        android:text="Rain"
-        android:textSize="@dimen/label3_text_size"
-        android:textColor="?attr/colorOnSurfaceVariant"/>
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tvHumidity"
+            app:layout_constraintStart_toStartOf="@+id/tvHumidity"
+            app:layout_constraintEnd_toEndOf="@+id/tvHumidity"
+            android:text="Rain"
+            android:textSize="@dimen/label3_text_size"
+            android:textColor="?attr/colorOnSurfaceVariant"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

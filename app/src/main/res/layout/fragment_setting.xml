@@ -6,7 +6,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".presentation.SettingFragment"
+        tools:context=".presentation.settings.SettingFragment"
         android:padding="@dimen/screen_padding">
 
         <ImageButton
@@ -30,7 +30,7 @@
             app:layout_constraintBottom_toBottomOf="@id/btnBack"
             app:layout_constraintStart_toEndOf="@id/btnBack"
             android:layout_marginStart="@dimen/far_margin"
-            android:text="Settings"
+            android:text="@string/setting_screen_title"
             android:textStyle="bold"
             android:textSize="@dimen/title2_text_size"
             android:textColor="?attr/colorOnBackground" />
@@ -42,7 +42,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvTitle"
             android:layout_marginTop="@dimen/far_margin"
-            android:text="General"
+            android:text="@string/setting_general_title"
             android:textSize="@dimen/title1_text_size"
             android:textColor="?attr/colorOnBackground" />
 
@@ -64,11 +64,13 @@
                 android:showDividers="middle">
 
                 <include
+                    android:id="@+id/includeLanguage"
                     layout="@layout/item_language"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
                 <include
+                    android:id="@+id/includeTheme"
                     layout="@layout/item_theme"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
@@ -83,7 +85,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/cardGeneral"
             android:layout_marginTop="@dimen/far_margin"
-            android:text="Unit of measurement"
+            android:text="@string/setting_unit_title"
             android:textSize="@dimen/title1_text_size"
             android:textColor="?attr/colorOnBackground" />
 
@@ -105,11 +107,13 @@
                 android:showDividers="middle">
 
                 <include
+                    android:id="@+id/includeWindspeed"
                     layout="@layout/item_windspeed"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
                 <include
+                    android:id="@+id/includeTemperature"
                     layout="@layout/item_temperature"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
@@ -124,9 +128,9 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/cardUnit"
             android:layout_marginTop="@dimen/far_margin"
-            android:text="About"
+            android:text="@string/setting_about_title"
             android:textSize="@dimen/title1_text_size"
-            android:textColor="?attr/colorOnBackground" />
+            android:textColor="?attr/colorOnBackground"/>
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardInfo"
@@ -146,11 +150,13 @@
                 android:showDividers="middle">
 
                 <include
+                    android:id="@+id/includeVersion"
                     layout="@layout/item_version"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
                 <include
+                    android:id="@+id/includeContact"
                     layout="@layout/item_contact"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
