@@ -52,6 +52,7 @@ dependencies {
     //Hilt for DI
     implementation("com.google.dagger:hilt-android:2.57.1")
     implementation(libs.androidx.activity)
+    implementation(libs.androidx.cardview)
     ksp("com.google.dagger:hilt-android-compiler:2.57.1")
     // Moshi for JSON parsing
     implementation(libs.converter.moshi)
