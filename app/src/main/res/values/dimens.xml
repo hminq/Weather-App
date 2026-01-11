@@ -15,9 +15,11 @@
     <dimen name="headline3_text_size">50sp</dimen>
     <dimen name="card_corner_radius">16dp</dimen>
     <dimen name="card_padding">16dp</dimen>
+    <dimen name="message_card_padding">8dp</dimen>
     <dimen name="space_divider_margin">24dp</dimen>
     <dimen name="close_margin">8dp</dimen>
     <dimen name="far_margin">16dp</dimen>
+    <dimen name="very_far_margin">48dp</dimen>
     <dimen name="button_image_padding">12dp</dimen>
     <dimen name="icon_padding">6dp</dimen>
     <dimen name="icon_size">36dp</dimen>
