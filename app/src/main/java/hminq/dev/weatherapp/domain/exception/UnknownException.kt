@@ -1,5 +1,5 @@
 package hminq.dev.weatherapp.domain.exception
 
-data class UnknownException(
-    override val message: String = "Unknown error"
-) : DomainException(message)
+class UnknownException(
+    cause: Throwable? = null
+) : DomainException(cause = cause)

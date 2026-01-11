@@ -1,4 +1,4 @@
-package hminq.dev.weatherapp.model.enum
+package hminq.dev.weatherapp.data.model.enum
 
 enum class SpeedTypeModel {
     KMH,

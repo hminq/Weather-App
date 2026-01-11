@@ -4,11 +4,11 @@ import android.content.Context
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.emptyPreferences
 import dagger.hilt.android.qualifiers.ApplicationContext
-import hminq.dev.weatherapp.model.UserSettingModel
-import hminq.dev.weatherapp.model.enum.LanguageModel
-import hminq.dev.weatherapp.model.enum.SpeedTypeModel
-import hminq.dev.weatherapp.model.enum.TemperatureModel
-import hminq.dev.weatherapp.model.enum.ThemeModel
+import hminq.dev.weatherapp.data.model.UserSettingModel
+import hminq.dev.weatherapp.data.model.enum.LanguageModel
+import hminq.dev.weatherapp.data.model.enum.SpeedTypeModel
+import hminq.dev.weatherapp.data.model.enum.TemperatureModel
+import hminq.dev.weatherapp.data.model.enum.ThemeModel
 import jakarta.inject.Inject
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch

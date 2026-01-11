@@ -5,11 +5,11 @@ import hminq.dev.weatherapp.domain.entity.enum.Language
 import hminq.dev.weatherapp.domain.entity.enum.SpeedType
 import hminq.dev.weatherapp.domain.entity.enum.Temperature
 import hminq.dev.weatherapp.domain.entity.enum.Theme
-import hminq.dev.weatherapp.model.UserSettingModel
-import hminq.dev.weatherapp.model.enum.LanguageModel
-import hminq.dev.weatherapp.model.enum.SpeedTypeModel
-import hminq.dev.weatherapp.model.enum.TemperatureModel
-import hminq.dev.weatherapp.model.enum.ThemeModel
+import hminq.dev.weatherapp.data.model.UserSettingModel
+import hminq.dev.weatherapp.data.model.enum.LanguageModel
+import hminq.dev.weatherapp.data.model.enum.SpeedTypeModel
+import hminq.dev.weatherapp.data.model.enum.TemperatureModel
+import hminq.dev.weatherapp.data.model.enum.ThemeModel
 
 fun UserSettingModel.toDomain(): UserSetting {
     val defaultDomainLanguage = Language.ENGLISH
