@@ -9,7 +9,7 @@
         android:id="@+id/ivTemperature"
         android:layout_width="@dimen/icon_size"
         android:layout_height="@dimen/icon_size"
-        android:background="@drawable/bg_setting_icon"
+        android:background="@drawable/bg_rounded"
         android:padding="@dimen/icon_padding"
         android:src="@drawable/ic_temp"
         app:layout_constraintBottom_toBottomOf="parent"

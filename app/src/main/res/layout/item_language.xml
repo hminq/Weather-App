@@ -13,7 +13,7 @@
         app:tint="?attr/colorPrimary"
         android:layout_width="@dimen/icon_size"
         android:layout_height="@dimen/icon_size"
-        android:background="@drawable/bg_setting_icon"
+        android:background="@drawable/bg_rounded"
         android:padding="@dimen/icon_padding"
         android:src="@drawable/ic_globe" />
 
@@ -24,7 +24,7 @@
         app:layout_constraintTop_toTopOf="@id/ivLanguage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="@dimen/far_margin"
         android:text="Language"
         android:textColor="?attr/colorOnSurface"
         android:textSize="@dimen/body1_text_size" />

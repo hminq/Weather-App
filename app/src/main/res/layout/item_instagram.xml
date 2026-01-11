@@ -18,7 +18,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             android:src="@drawable/ic_instagram"
             android:padding="@dimen/icon_padding"
-            android:background="@drawable/bg_setting_icon"
+            android:background="@drawable/bg_rounded"
             android:tint="?attr/colorPrimary"/>
 
         <androidx.constraintlayout.helper.widget.Flow
