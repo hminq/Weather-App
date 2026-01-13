@@ -22,10 +22,27 @@
         <action
             android:id="@+id/action_settingFragment_to_contactFragment"
             app:destination="@id/contactFragment" />
+        <action
+            android:id="@+id/action_settingFragment_to_themeFragment"
+            app:destination="@id/themeFragment" />
+        <action
+            android:id="@+id/action_settingFragment_to_languageFragment"
+            app:destination="@id/languageFragment" />
     </fragment>
     <fragment
         android:id="@+id/contactFragment"
         android:name="hminq.dev.weatherapp.presentation.ContactFragment"
         android:label="ContactFragment"
         tools:layout="@layout/fragment_contact"/>
+    <fragment
+        android:id="@+id/themeFragment"
+        android:name="hminq.dev.weatherapp.presentation.settings.ThemeFragment"
+        android:label="ThemeFragment"
+        tools:layout="@layout/fragment_theme"/>
+
+    <fragment
+        android:id="@+id/languageFragment"
+        android:name="hminq.dev.weatherapp.presentation.settings.LanguageFragment"
+        android:label="LanguageFragment"
+        tools:layout="@layout/fragment_language"/>
 </navigation>

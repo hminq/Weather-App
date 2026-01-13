@@ -14,8 +14,10 @@ import dagger.hilt.android.AndroidEntryPoint
 import hminq.dev.weatherapp.R
 import hminq.dev.weatherapp.databinding.FragmentSettingBinding
 import hminq.dev.weatherapp.domain.entity.UserSetting
+import hminq.dev.weatherapp.domain.entity.enum.Language
 import hminq.dev.weatherapp.domain.entity.enum.SpeedType
 import hminq.dev.weatherapp.domain.entity.enum.Temperature
+import hminq.dev.weatherapp.domain.entity.enum.Theme
 import hminq.dev.weatherapp.presentation.extensions.MessageType
 import hminq.dev.weatherapp.presentation.extensions.showMessage
 import kotlinx.coroutines.launch
@@ -128,6 +130,19 @@ class SettingFragment : Fragment() {
             isLeft = setting.temperature == Temperature.CELSIUS,
             animate = false
         )
+
+        // Sync language display
+        binding.includeLanguage.tvLanguageValue.text = when (setting.language) {
+            Language.ENGLISH -> getString(R.string.language_english)
+            Language.VIETNAMESE -> getString(R.string.language_vietnamese)
+        }
+
+        // Sync theme display
+        binding.includeTheme.tvThemeValue.text = when (setting.theme) {
+            Theme.LIGHT -> getString(R.string.theme_light)
+            Theme.DARK -> getString(R.string.theme_dark)
+            Theme.SYSTEM -> getString(R.string.theme_system)
+        }
     }
 
     private fun setupListeners() {
@@ -138,6 +153,14 @@ class SettingFragment : Fragment() {
 
             includeContact.itemContact.setOnClickListener {
                 findNavController().navigate(R.id.action_settingFragment_to_contactFragment)
+            }
+
+            includeLanguage.itemLanguage.setOnClickListener {
+                findNavController().navigate(R.id.action_settingFragment_to_languageFragment)
+            }
+
+            includeTheme.itemTheme.setOnClickListener {
+                findNavController().navigate(R.id.action_settingFragment_to_themeFragment)
             }
         }
     }

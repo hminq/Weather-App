@@ -98,7 +98,6 @@
                     android:text="18°C"
                     android:textColor="?attr/colorOnSurface"
                     android:textSize="@dimen/headline3_text_size"
-                    android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tvCurrentCondition" />
 
@@ -191,8 +190,8 @@
             android:layout_height="wrap_content"
             android:text="@string/tomorrow"
             android:textColor="?attr/colorOnBackground"
-            android:textStyle="bold"
             android:clickable="true"
+            android:textStyle="bold"
             android:focusable="true"/>
 
         <TextView
