@@ -6,10 +6,9 @@ import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.net.Uri
 import android.os.Build
-import android.util.Log
 import android.widget.Toast
+import androidx.core.net.toUri
 
 /**
  * Opens URL in a specific app if installed, otherwise opens in browser
@@ -20,7 +19,7 @@ fun Context.openUrlInApp(url: String, appPackageName: String? = null) {
     // Check if specific app is installed
     if (!appPackageName.isNullOrEmpty() && isAppInstalled(appPackageName)) {
         try {
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url)).apply {
+            val intent = Intent(Intent.ACTION_VIEW, url.toUri()).apply {
                 setPackage(appPackageName)
                 addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             }
@@ -28,6 +27,7 @@ fun Context.openUrlInApp(url: String, appPackageName: String? = null) {
             return
         } catch (_: ActivityNotFoundException) {
             // App installed but can't handle this URL, fall through to browser
+            openInBrowser(url)
         }
     }
     // Fallback: Open in browser
@@ -39,7 +39,7 @@ fun Context.openUrlInApp(url: String, appPackageName: String? = null) {
  */
 fun Context.openInBrowser(url: String) {
     try {
-        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url)).apply {
+        val intent = Intent(Intent.ACTION_VIEW, url.toUri()).apply {
             addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         }
         startActivity(intent)
@@ -61,11 +61,12 @@ fun Context.isAppInstalled(packageName: String): Boolean {
 }
 
 fun Context.copyToClipboard(text: String, label: String = "Copied Email Address") {
-    val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-    val clip = ClipData.newPlainText(label, text)
-    clipboard.setPrimaryClip(clip)
+    (getSystemService(Context.CLIPBOARD_SERVICE) as? ClipboardManager)?.let { clipboard ->
+        val clip = ClipData.newPlainText(label, text)
+        clipboard.setPrimaryClip(clip)
 
-    if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.S_V2) {
-        Toast.makeText(this, "Copied Email Address", Toast.LENGTH_SHORT).show()
-    }
+        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.S_V2) {
+            Toast.makeText(this, "Copied Email Address", Toast.LENGTH_SHORT).show()
+        }
+    } ?: Toast.makeText(this, "Cannot copy to clipboard", Toast.LENGTH_SHORT).show()
 }
