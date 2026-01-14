@@ -7,9 +7,10 @@
     <string name="this_week">This week</string>
     <string name="hourly_weather_time_placeholder">10 am</string>
     <string name="hourly_weather_temp_placeholder">18°C</string>
-    <string name="city_placeholder">Hanoi City</string>
-    <string name="country_placeholder">Vietnam,</string>
+    <string name="city_placeholder">--</string>
+    <string name="country_placeholder">--</string>
     <string name="general_error">Something is wrong…</string>
+    <string name="network_error">Network error…</string>
     <string name="local_storage_exception">Error saving data.</string>
 
     <!-- Settings -->

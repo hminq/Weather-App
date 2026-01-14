@@ -8,9 +8,10 @@
     <string name="this_week">Tuần này</string>
     <string name="hourly_weather_time_placeholder">10 am</string>
     <string name="hourly_weather_temp_placeholder">18°C</string>
-    <string name="city_placeholder">TP Hanoi</string>
-    <string name="country_placeholder">Vietnam,</string>
-    <string name="general_error">Có lỗi xảy ra...</string>
+    <string name="city_placeholder">--</string>
+    <string name="country_placeholder">--</string>
+    <string name="general_error">Có lỗi xảy ra…</string>
+    <string name="network_error">Lỗi mạng…</string>
     <string name="local_storage_exception">Lỗi khi lưu dữ liệu</string>
     <string name="wind_speed_title">Tốc độ gió</string>
     <string name="temperature_title">Nhiệt độ</string>
