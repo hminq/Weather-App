@@ -27,7 +27,16 @@ enum class MessageType(val iconRes: Int) {
     ERROR(R.drawable.ic_error)
 }
 
-private var hideJob: Job? = null
+// Use View tag to store Job per CardView instance
+private const val TAG_HIDE_JOB = 0x7f0a0001 // Unique tag ID for hide job
+
+private fun CardView.getHideJob(): Job? {
+    return getTag(TAG_HIDE_JOB) as? Job
+}
+
+private fun CardView.setHideJob(job: Job?) {
+    setTag(TAG_HIDE_JOB, job)
+}
 
 fun CardView.showMessage(
     message: UiMessage,
@@ -46,15 +55,22 @@ fun CardView.showMessage(
     alpha = 0f
     animate().alpha(1f).setDuration(200).start()
 
-    hideJob?.cancel()
-    hideJob = scope.launch {
+    // Cancel previous job for a CardView instance
+    getHideJob()?.cancel()
+    
+    // Store new job for a specific CardView instance
+    val newJob = scope.launch {
         delay(autoHideMillis)
         hideMessage()
     }
+    setHideJob(newJob)
 }
 
 fun CardView.hideMessage() {
-    hideJob?.cancel()
+    // Cancel job for THIS CardView instance
+    getHideJob()?.cancel()
+    setHideJob(null)
+    
     animate()
         .alpha(0f)
         .setDuration(200)
