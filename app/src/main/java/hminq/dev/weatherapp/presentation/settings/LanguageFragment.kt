@@ -52,13 +52,6 @@ class LanguageFragment : Fragment() {
                             is LanguageUiState.Success -> {
                                 syncLanguageSelection(state.userSetting.language)
                             }
-                            is LanguageUiState.Error -> {
-                                binding.cardMessage.showMessage(
-                                    message = state.message,
-                                    type = MessageType.ERROR,
-                                    scope = lifecycleScope
-                                )
-                            }
                         }
                     }
                 }

@@ -15,6 +15,7 @@ import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
@@ -30,8 +31,10 @@ class LanguageViewModel @Inject constructor(
     val uiState: StateFlow<LanguageUiState> = _uiState.asStateFlow()
     private val _event = Channel<LanguageEvent>(Channel.BUFFERED)
     val event = _event.receiveAsFlow()
-    val currentSetting: UserSetting?
-        get() = (_uiState.value as? LanguageUiState.Success)?.userSetting
+    val currentSetting: UserSetting
+        get() = when (val state = _uiState.value) {
+            is LanguageUiState.Success -> state.userSetting
+        }
 
     private val saveSuccessMsg = UiMessage.StringResource(R.string.save_setting_success)
     private val saveErrorMsg = UiMessage.StringResource(R.string.save_setting_error)
@@ -47,7 +50,7 @@ class LanguageViewModel @Inject constructor(
                 .onEach { setting ->
                     _uiState.value = LanguageUiState.Success(setting)
                 }
-                .collect {}
+                .collect() 
         }
     }
 
@@ -55,8 +58,7 @@ class LanguageViewModel @Inject constructor(
         viewModelScope.launch {
             try {
                 setUserSetting.invoke(userSetting)
-                // Update local state
-                _uiState.value = LanguageUiState.Success(userSetting)
+                // State will be automatically updated via Flow from Repository
                 // Send SaveSuccess before LanguageChanged
                 _event.send(LanguageEvent.SaveSuccess(saveSuccessMsg))
                 _event.send(LanguageEvent.LanguageChanged(userSetting.language))
@@ -69,8 +71,7 @@ class LanguageViewModel @Inject constructor(
     }
 
     fun updateLanguage(language: Language) {
-        val setting = currentSetting ?: UserSetting()
-        val updatedSetting = setting.copy(language = language)
+        val updatedSetting = currentSetting.copy(language = language)
         saveUserSetting(updatedSetting)
     }
 }
