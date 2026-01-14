@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -6,6 +8,14 @@ plugins {
     id("com.google.dagger.hilt.android")
 
     kotlin("plugin.serialization") version "2.0.21"
+}
+
+// Load local.properties
+val localProperties = Properties().apply {
+    val localPropertiesFile = rootProject.file("local.properties")
+    if (localPropertiesFile.exists()) {
+        load(localPropertiesFile.inputStream())
+    }
 }
 
 android {
@@ -22,6 +32,10 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        // BuildConfig fields from local.properties
+        buildConfigField("String", "BASE_URL", "\"${localProperties.getProperty("base_url", "https://api.weatherapi.com/v1/")}\"")
+        buildConfigField("String", "API_KEY", "\"${localProperties.getProperty("api_key", "")}\"")
     }
 
     buildTypes {
@@ -39,10 +53,12 @@ android {
     }
     kotlinOptions {
         jvmTarget = "11"
+        freeCompilerArgs = listOf("-XXLanguage:+PropertyParamAnnotationDefaultTargetMode")
     }
     buildFeatures {
         dataBinding = true
         viewBinding = true
+        buildConfig = true
     }
 }
 
@@ -56,8 +72,12 @@ dependencies {
     ksp("com.google.dagger:hilt-android-compiler:2.57.1")
     // Moshi for JSON parsing
     implementation(libs.converter.moshi)
+    implementation("com.squareup.moshi:moshi-kotlin:1.15.1")
     // Retrofit for API calling
     implementation(libs.retrofit2.retrofit)
+
+    // Google Play Services Location
+    implementation("com.google.android.gms:play-services-location:21.3.0")
 
     // Views/Fragments integration
     implementation(libs.androidx.navigation.fragment)
