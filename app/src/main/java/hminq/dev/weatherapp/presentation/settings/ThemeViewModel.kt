@@ -15,6 +15,7 @@ import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
@@ -31,8 +32,10 @@ class ThemeViewModel @Inject constructor(
     private val _event = Channel<ThemeEvent>(Channel.BUFFERED)
     val event = _event.receiveAsFlow()
 
-    private val currentSetting: UserSetting?
-        get() = (_uiState.value as? ThemeUiState.Success)?.userSetting
+    private val currentSetting: UserSetting
+        get() = when (val state = _uiState.value) {
+            is ThemeUiState.Success -> state.userSetting
+        }
 
     private val saveSuccessMsg = UiMessage.StringResource(R.string.save_setting_success)
     private val saveErrorMsg = UiMessage.StringResource(R.string.save_setting_error)
@@ -48,7 +51,7 @@ class ThemeViewModel @Inject constructor(
                 .onEach { setting ->
                     _uiState.value = ThemeUiState.Success(setting)
                 }
-                .collect {}
+                .collect() 
         }
     }
 
@@ -56,7 +59,7 @@ class ThemeViewModel @Inject constructor(
         viewModelScope.launch {
             try {
                 setUserSetting.invoke(userSetting)
-                _uiState.value = ThemeUiState.Success(userSetting)
+                // State will be automatically updated via Flow from Repository
                 _event.send(ThemeEvent.SaveSuccess(saveSuccessMsg))
                 _event.send(ThemeEvent.ThemeChanged)
             } catch (_: DomainException) {
@@ -68,8 +71,7 @@ class ThemeViewModel @Inject constructor(
     }
 
     fun updateTheme(theme: Theme) {
-        val setting = currentSetting ?: UserSetting()
-        val updatedSetting = setting.copy(theme = theme)
+        val updatedSetting = currentSetting.copy(theme = theme)
         saveUserSetting(updatedSetting)
     }
 }

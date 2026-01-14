@@ -50,13 +50,6 @@ class ThemeFragment : Fragment() {
                             is ThemeUiState.Success -> {
                                 syncThemeSelection(state.userSetting.theme)
                             }
-                            is ThemeUiState.Error -> {
-                                binding.cardMessage.showMessage(
-                                    message = state.message,
-                                    type = MessageType.ERROR,
-                                    scope = lifecycleScope
-                                )
-                            }
                         }
                     }
                 }
@@ -66,8 +59,10 @@ class ThemeFragment : Fragment() {
                         when (event) {
                             is ThemeEvent.ThemeChanged -> {
                                 // Apply theme immediately
-                                val currentTheme = (viewModel.uiState.value as? ThemeUiState.Success)?.userSetting?.theme
-                                currentTheme?.let { applyTheme(it) }
+                                val currentTheme = when (val state = viewModel.uiState.value) {
+                                    is ThemeUiState.Success -> state.userSetting.theme
+                                }
+                                applyTheme(currentTheme)
                             }
                             is ThemeEvent.SaveSuccess -> {
                                 binding.cardMessage.showMessage(
