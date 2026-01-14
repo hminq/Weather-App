@@ -11,6 +11,11 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.google.android.material.color.MaterialColors
 import hminq.dev.weatherapp.R
+import hminq.dev.weatherapp.domain.entity.HourForecast
+import hminq.dev.weatherapp.domain.entity.enum.Condition
+import hminq.dev.weatherapp.domain.entity.enum.Temperature
+import java.time.Instant
+import java.time.ZoneId
 import kotlin.math.abs
 
 class WeatherChartView @JvmOverloads constructor(
@@ -19,47 +24,26 @@ class WeatherChartView @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : FrameLayout(context, attrs, defStyleAttr) {
 
-    // Mock data for 24 hours
+    // Internal data class for chart
     private data class HourlyData(
         val hour: Int,
         val temperature: Int,
-        val condition: String,
+        val condition: Condition,
         val conditionIcon: Int
     )
 
-    private val mockData = listOf(
-        HourlyData(0, 14, "Clear", R.drawable.ic_clear_night),
-        HourlyData(1, 13, "Clear", R.drawable.ic_clear_night),
-        HourlyData(2, 12, "Clear", R.drawable.ic_clear_night),
-        HourlyData(3, 12, "Clear", R.drawable.ic_clear_night),
-        HourlyData(4, 11, "Clear", R.drawable.ic_clear_night),
-        HourlyData(5, 12, "Partly Cloudy", R.drawable.ic_cloudy),
-        HourlyData(6, 13, "Cloudy", R.drawable.ic_cloudy),
-        HourlyData(7, 14, "Cloudy", R.drawable.ic_cloudy),
-        HourlyData(8, 15, "Partly Cloudy", R.drawable.ic_cloudy),
-        HourlyData(9, 16, "Sunny", R.drawable.ic_clear_day),
-        HourlyData(10, 17, "Sunny", R.drawable.ic_clear_day),
-        HourlyData(11, 18, "Sunny", R.drawable.ic_clear_day),
-        HourlyData(12, 19, "Sunny", R.drawable.ic_clear_day),
-        HourlyData(13, 20, "Sunny", R.drawable.ic_clear_day),
-        HourlyData(14, 21, "Sunny", R.drawable.ic_clear_day),
-        HourlyData(15, 20, "Partly Cloudy", R.drawable.ic_cloudy),
-        HourlyData(16, 19, "Cloudy", R.drawable.ic_cloudy),
-        HourlyData(17, 18, "Cloudy", R.drawable.ic_cloudy),
-        HourlyData(18, 17, "Cloudy", R.drawable.ic_cloudy),
-        HourlyData(19, 16, "Clear", R.drawable.ic_clear_night),
-        HourlyData(20, 15, "Clear", R.drawable.ic_clear_night),
-        HourlyData(21, 15, "Clear", R.drawable.ic_clear_night),
-        HourlyData(22, 14, "Clear", R.drawable.ic_clear_night),
-        HourlyData(23, 14, "Clear", R.drawable.ic_clear_night)
-    )
+    // Current hourly data (from API or default)
+    private var hourlyData: List<HourlyData> = emptyList()
+
+    // Temperature unit setting
+    private var temperatureUnit: Temperature = Temperature.CELSIUS
 
     // Interpolated data (60 points per hour = 1440 total for smooth curve)
     private data class MinuteData(
         val hour: Int,
         val minute: Int,
         val temperature: Float,
-        val condition: String,
+        val condition: Condition,
         val conditionIcon: Int
     )
 
@@ -169,13 +153,13 @@ class WeatherChartView @JvmOverloads constructor(
         points.clear()
         minuteData.clear()
 
-        if (mockData.isEmpty() || width == 0 || height == 0) return
+        if (hourlyData.isEmpty() || width == 0 || height == 0) return
 
         // Generate minute-level data with smooth temperature interpolation
-        mockData.forEachIndexed { hourIndex, hourData ->
-            val currentTemp = hourData.temperature.toFloat()
-            val nextTemp = if (hourIndex < mockData.size - 1) {
-                mockData[hourIndex + 1].temperature.toFloat()
+        hourlyData.forEachIndexed { hourIndex, data ->
+            val currentTemp = data.temperature.toFloat()
+            val nextTemp = if (hourIndex < hourlyData.size - 1) {
+                hourlyData[hourIndex + 1].temperature.toFloat()
             } else {
                 currentTemp
             }
@@ -185,11 +169,11 @@ class WeatherChartView @JvmOverloads constructor(
                 val interpolatedTemp = currentTemp + (nextTemp - currentTemp) * t
 
                 minuteData.add(MinuteData(
-                    hour = hourData.hour,
+                    hour = data.hour,
                     minute = minute,
                     temperature = interpolatedTemp,
-                    condition = hourData.condition,
-                    conditionIcon = hourData.conditionIcon
+                    condition = data.condition,
+                    conditionIcon = data.conditionIcon
                 ))
             }
         }
@@ -197,8 +181,8 @@ class WeatherChartView @JvmOverloads constructor(
         val chartWidth = width - 2 * chartPaddingHorizontal
         val chartHeight = height - chartPaddingTop - chartPaddingBottom
 
-        val minTemp = mockData.minOf { it.temperature }
-        val maxTemp = mockData.maxOf { it.temperature }
+        val minTemp = hourlyData.minOf { it.temperature }
+        val maxTemp = hourlyData.maxOf { it.temperature }
         val tempRange = (maxTemp - minTemp).coerceAtLeast(1)
 
         minuteData.forEachIndexed { index, data ->
@@ -392,6 +376,107 @@ class WeatherChartView @JvmOverloads constructor(
                 chartView.invalidate()
                 updateTooltipPosition()
             }
+        }
+    }
+
+    /**
+     * Set hourly weather data from API
+     * @param data List of HourForecast (should be 24 items for full day)
+     * @param timeZoneId Location's timezone ID
+     * @param unit Temperature unit preference
+     */
+    fun setData(
+        data: List<HourForecast>,
+        timeZoneId: String = "UTC",
+        unit: Temperature = Temperature.CELSIUS
+    ) {
+        temperatureUnit = unit
+        val zoneId = ZoneId.of(timeZoneId)
+
+        // Convert HourForecast to internal HourlyData
+        hourlyData = data.map { hourly ->
+            val temp = if (unit == Temperature.CELSIUS) {
+                hourly.tempC.toInt()
+            } else {
+                hourly.tempF.toInt()
+            }
+
+            // Extract hour using location's timezone
+            val hour = Instant.ofEpochSecond(hourly.timeEpoch)
+                .atZone(zoneId)
+                .hour
+
+            HourlyData(
+                hour = hour,
+                temperature = temp,
+                condition = hourly.condition,
+                conditionIcon = getConditionIcon(hourly.condition)
+            )
+        }
+
+        // Recalculate if view is already laid out
+        if (width > 0 && height > 0) {
+            calculatePoints()
+            updateAreaGradient()
+            updateTooltipPosition()
+            chartView.invalidate()
+        }
+    }
+
+    /**
+     * Set default/loading data for the chart (24 hours with placeholder values)
+     * @param unit Temperature unit preference
+     */
+    fun setDefaultData(unit: Temperature = Temperature.CELSIUS) {
+        temperatureUnit = unit
+        val now = java.time.ZonedDateTime.now(ZoneId.of("UTC"))
+        val defaultTemp = if (unit == Temperature.CELSIUS) 20 else 68 // 20°C = 68°F
+
+        // Create 24 hours of default data
+        hourlyData = (0..23).map { hourOffset ->
+            val hour = (now.hour + hourOffset) % 24
+            HourlyData(
+                hour = hour,
+                temperature = defaultTemp,
+                condition = Condition.UNKNOWN,
+                conditionIcon = getConditionIcon(Condition.UNKNOWN)
+            )
+        }
+
+        // Recalculate if view is already laid out
+        if (width > 0 && height > 0) {
+            calculatePoints()
+            updateAreaGradient()
+            updateTooltipPosition()
+            chartView.invalidate()
+        }
+    }
+
+    private fun getConditionIcon(condition: Condition): Int {
+        return when (condition) {
+            Condition.CLEAR_DAY -> R.drawable.ic_clear_day
+            Condition.CLEAR_NIGHT -> R.drawable.ic_clear_night
+            Condition.CLOUDY -> R.drawable.ic_cloudy
+            Condition.RAIN -> R.drawable.ic_rain
+            Condition.SNOW -> R.drawable.ic_snow
+            Condition.ICE -> R.drawable.ic_ice
+            Condition.THUNDER -> R.drawable.ic_thunder
+            Condition.FOG -> R.drawable.ic_fog
+            Condition.UNKNOWN -> R.drawable.ic_cloudy
+        }
+    }
+
+    private fun getConditionText(condition: Condition): String {
+        return when (condition) {
+            Condition.CLEAR_DAY -> "Clear"
+            Condition.CLEAR_NIGHT -> "Clear"
+            Condition.CLOUDY -> "Cloudy"
+            Condition.RAIN -> "Rainy"
+            Condition.SNOW -> "Snowy"
+            Condition.ICE -> "Icy"
+            Condition.THUNDER -> "Thunder"
+            Condition.FOG -> "Foggy"
+            Condition.UNKNOWN -> "Unknown"
         }
     }
 
