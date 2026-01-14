@@ -21,5 +21,5 @@ Clean Architecture with MVVM pattern (Data, Domain, Presentation layers).
 Weather data provided by [WeatherAPI.com](https://www.weatherapi.com/).
 
 ## Screenshots
-![Screenshot_1](screenshots/screenshot_1.jpg)
-![Screenshot_2](screenshots/screenshot_2.jpg)
+<img src="screenshots/screenshot_1.jpg" width="500">
+<img src="screenshots/screenshot_2.jpg" width="500">
