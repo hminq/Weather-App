@@ -24,7 +24,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="6dp"
-            android:text="98 %"
+            android:text="--"
             android:textColor="?attr/colorOnSurface"
             android:textSize="@dimen/body1_text_size"/>
 

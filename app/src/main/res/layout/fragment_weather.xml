@@ -6,7 +6,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".presentation.WeatherFragment"
+        tools:context=".presentation.weather.WeatherFragment"
         android:paddingHorizontal="@dimen/screen_padding"
         android:clipChildren="false"
         android:clipToPadding="false">
@@ -15,7 +15,7 @@
             android:id="@+id/tvCountry"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="48dp"
             android:text="@string/country_placeholder"
             android:textColor="?attr/colorOnSurfaceVariant"
             android:textSize="@dimen/title1_text_size"
@@ -71,7 +71,7 @@
                     android:id="@+id/tvCurrentTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="25 January 2004"
+                    android:text="--"
                     android:textColor="?attr/colorOnSurfaceVariant"
                     android:textSize="@dimen/body1_text_size"
                     app:layout_constraintStart_toStartOf="parent"
@@ -83,7 +83,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-                    android:text="Cloudy as fuck"
+                    android:text="--"
                     android:textColor="?attr/colorOnSurface"
                     android:textSize="@dimen/body2_text_size"
                     app:layout_constraintStart_toStartOf="parent"
@@ -95,7 +95,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
-                    android:text="18°C"
+                    android:text="--°C"
                     android:textColor="?attr/colorOnSurface"
                     android:textSize="@dimen/headline3_text_size"
                     app:layout_constraintStart_toStartOf="parent"
@@ -146,18 +146,21 @@
                 android:showDividers="middle">
 
                 <include
+                    android:id="@+id/includeWindSpeed"
                     layout="@layout/item_setting_windspeed"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1" />
 
                 <include
+                    android:id="@+id/includeHumidity"
                     layout="@layout/item_humidity"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1" />
 
                 <include
+                    android:id="@+id/includeRain"
                     layout="@layout/item_rain"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
@@ -191,7 +194,6 @@
             android:text="@string/tomorrow"
             android:textColor="?attr/colorOnBackground"
             android:clickable="true"
-            android:textStyle="bold"
             android:focusable="true"/>
 
         <TextView

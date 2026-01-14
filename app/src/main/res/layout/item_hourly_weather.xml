@@ -46,6 +46,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:text="@string/hourly_weather_temp_placeholder"
+                android:layout_marginTop="@dimen/close_margin"
                 android:textColor="?attr/colorOnSurface"
                 android:textSize="@dimen/body1_text_size"/>
         </androidx.constraintlayout.widget.ConstraintLayout>

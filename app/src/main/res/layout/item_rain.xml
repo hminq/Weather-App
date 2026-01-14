@@ -7,7 +7,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto">
 
         <ImageView
-            android:id="@+id/ivHumidity"
+            android:id="@+id/ivRain"
             android:layout_width="@dimen/small_icon_size"
             android:layout_height="@dimen/small_icon_size"
             app:layout_constraintTop_toTopOf="parent"
@@ -17,14 +17,14 @@
             app:tint="?attr/colorOnSurfaceVariant"/>
 
         <TextView
-            android:id="@+id/tvHumidity"
+            android:id="@+id/tvRain"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/ivHumidity"
-            app:layout_constraintStart_toStartOf="@id/ivHumidity"
-            app:layout_constraintEnd_toEndOf="@id/ivHumidity"
+            app:layout_constraintTop_toBottomOf="@id/ivRain"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="6dp"
-            android:text="67 %"
+            android:text="--"
             android:textColor="?attr/colorOnSurface"
             android:textSize="@dimen/body1_text_size"/>
 
@@ -32,9 +32,9 @@
             android:id="@+id/tvTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/tvHumidity"
-            app:layout_constraintStart_toStartOf="@+id/tvHumidity"
-            app:layout_constraintEnd_toEndOf="@+id/tvHumidity"
+            app:layout_constraintTop_toBottomOf="@id/tvRain"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             android:text="Rain"
             android:textSize="@dimen/label3_text_size"
             android:textColor="?attr/colorOnSurfaceVariant"/>

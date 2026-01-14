@@ -18,6 +18,7 @@
     <dimen name="message_card_padding">8dp</dimen>
     <dimen name="space_divider_margin">24dp</dimen>
     <dimen name="close_margin">8dp</dimen>
+    <dimen name="very_close_margin">4dp</dimen>
     <dimen name="far_margin">16dp</dimen>
     <dimen name="very_far_margin">48dp</dimen>
     <dimen name="button_image_padding">12dp</dimen>
