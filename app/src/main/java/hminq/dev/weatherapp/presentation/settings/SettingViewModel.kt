@@ -16,6 +16,7 @@ import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
@@ -31,8 +32,10 @@ class SettingViewModel @Inject constructor(
     val uiState: StateFlow<SettingUiState> = _uiState.asStateFlow()
     private val _event = Channel<SettingEvent>(Channel.BUFFERED)
     val event = _event.receiveAsFlow()
-    val currentSetting: UserSetting?
-        get() = (_uiState.value as? SettingUiState.Success)?.userSetting
+    val currentSetting: UserSetting
+        get() = when (val state = _uiState.value) {
+            is SettingUiState.Success -> state.userSetting
+        }
 
     private val saveSuccessMsg = UiMessage.StringResource(R.string.save_setting_success)
     private val saveErrorMsg = UiMessage.StringResource(R.string.save_setting_error)
@@ -48,7 +51,7 @@ class SettingViewModel @Inject constructor(
                 .onEach { setting ->
                     _uiState.value = SettingUiState.Success(setting)
                 }
-                .collect {}
+                .collect()
         }
     }
 
@@ -56,8 +59,7 @@ class SettingViewModel @Inject constructor(
         viewModelScope.launch {
             try {
                 setUserSetting.invoke(userSetting)
-                // Update local state
-                _uiState.value = SettingUiState.Success(userSetting)
+                // State will be automatically updated via Flow from Repository
                 _event.send(SettingEvent.SaveSuccess(saveSuccessMsg))
             } catch (_: DomainException) {
                 _event.send(SettingEvent.SaveError(saveErrorMsg))
@@ -68,14 +70,12 @@ class SettingViewModel @Inject constructor(
     }
 
     fun updateTemperatureUnit(temperature: Temperature) {
-        val setting = currentSetting ?: UserSetting()
-        val updatedSetting = setting.copy(temperature = temperature)
+        val updatedSetting = currentSetting.copy(temperature = temperature)
         saveUserSetting(updatedSetting)
     }
 
     fun updateWindSpeedUnit(speedType: SpeedType) {
-        val setting = currentSetting ?: UserSetting()
-        val updatedSetting = setting.copy(windSpeedType = speedType)
+        val updatedSetting = currentSetting.copy(windSpeedType = speedType)
         saveUserSetting(updatedSetting)
     }
 }

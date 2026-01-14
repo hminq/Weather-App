@@ -82,13 +82,6 @@ class SettingFragment : Fragment() {
                             is SettingUiState.Success -> {
                                 syncTogglesWithSettings(state.userSetting)
                             }
-                            is SettingUiState.Error -> {
-                                binding.cardMessage.showMessage(
-                                    message = state.message,
-                                    type = MessageType.ERROR,
-                                    scope = lifecycleScope
-                                )
-                            }
                         }
                     }
                 }
