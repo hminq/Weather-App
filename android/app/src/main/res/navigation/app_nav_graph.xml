@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/app_nav_graph"
+    app:startDestination="@id/weatherFragment">
+
+    <fragment
+        android:id="@+id/weatherFragment"
+        android:name="hminq.dev.weatherapp.presentation.weather.WeatherFragment"
+        android:label="fragment_weather"
+        tools:layout="@layout/fragment_weather" >
+        <action
+            android:id="@+id/action_weatherFragment_to_settingFragment"
+            app:destination="@id/settingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingFragment"
+        android:name="hminq.dev.weatherapp.presentation.settings.SettingFragment"
+        android:label="fragment_setting"
+        tools:layout="@layout/fragment_setting" >
+        <action
+            android:id="@+id/action_settingFragment_to_contactFragment"
+            app:destination="@id/contactFragment" />
+        <action
+            android:id="@+id/action_settingFragment_to_themeFragment"
+            app:destination="@id/themeFragment" />
+        <action
+            android:id="@+id/action_settingFragment_to_languageFragment"
+            app:destination="@id/languageFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/contactFragment"
+        android:name="hminq.dev.weatherapp.presentation.ContactFragment"
+        android:label="ContactFragment"
+        tools:layout="@layout/fragment_contact"/>
+    <fragment
+        android:id="@+id/themeFragment"
+        android:name="hminq.dev.weatherapp.presentation.settings.ThemeFragment"
+        android:label="ThemeFragment"
+        tools:layout="@layout/fragment_theme"/>
+
+    <fragment
+        android:id="@+id/languageFragment"
+        android:name="hminq.dev.weatherapp.presentation.settings.LanguageFragment"
+        android:label="LanguageFragment"
+        tools:layout="@layout/fragment_language"/>
+</navigation>

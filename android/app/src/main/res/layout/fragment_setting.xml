@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".presentation.settings.SettingFragment"
+        android:padding="@dimen/screen_padding">
+
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="32dp"
+            android:src="@drawable/ic_arrow_left"
+            android:scaleType="centerInside"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:backgroundTint="?attr/colorOnSurfaceVariant"
+            android:padding="@dimen/button_image_padding"/>
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@id/btnBack"
+            app:layout_constraintBottom_toBottomOf="@id/btnBack"
+            app:layout_constraintStart_toEndOf="@id/btnBack"
+            android:layout_marginStart="@dimen/far_margin"
+            android:text="@string/setting_screen_title"
+            android:textStyle="bold"
+            android:textSize="@dimen/title2_text_size"
+            android:textColor="?attr/colorOnBackground" />
+
+        <TextView
+            android:id="@+id/tvGeneralTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvTitle"
+            android:layout_marginTop="@dimen/far_margin"
+            android:text="@string/setting_general_title"
+            android:textSize="@dimen/title1_text_size"
+            android:textColor="?attr/colorOnBackground" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardGeneral"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tvGeneralTitle"
+            android:layout_marginVertical="@dimen/close_margin"
+            app:cardBackgroundColor="?attr/colorSurface"
+            app:cardCornerRadius="@dimen/card_padding">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="@dimen/card_padding"
+                android:orientation="vertical"
+                android:divider="@drawable/space_divider"
+                android:showDividers="middle">
+
+                <include
+                    android:id="@+id/includeLanguage"
+                    layout="@layout/item_language"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <include
+                    android:id="@+id/includeTheme"
+                    layout="@layout/item_theme"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/tvUnitTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cardGeneral"
+            android:layout_marginTop="@dimen/far_margin"
+            android:text="@string/setting_unit_title"
+            android:textSize="@dimen/title1_text_size"
+            android:textColor="?attr/colorOnBackground" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardUnit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tvUnitTitle"
+            android:layout_marginVertical="@dimen/close_margin"
+            app:cardBackgroundColor="?attr/colorSurface"
+            app:cardCornerRadius="@dimen/card_corner_radius">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="@dimen/card_padding"
+                android:orientation="vertical"
+                android:divider="@drawable/space_divider"
+                android:showDividers="middle">
+
+                <include
+                    android:id="@+id/includeWindspeed"
+                    layout="@layout/item_windspeed"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <include
+                    android:id="@+id/includeTemperature"
+                    layout="@layout/item_temperature"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/tvInfoTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cardUnit"
+            android:layout_marginTop="@dimen/far_margin"
+            android:text="@string/setting_about_title"
+            android:textSize="@dimen/title1_text_size"
+            android:textColor="?attr/colorOnBackground"/>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tvInfoTitle"
+            android:layout_marginVertical="@dimen/close_margin"
+            app:cardBackgroundColor="?attr/colorSurface"
+            app:cardCornerRadius="@dimen/card_corner_radius">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="@dimen/card_padding"
+                android:orientation="vertical"
+                android:divider="@drawable/space_divider"
+                android:showDividers="middle">
+
+                <include
+                    android:id="@+id/includeVersion"
+                    layout="@layout/item_version"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <include
+                    android:id="@+id/includeContact"
+                    layout="@layout/item_contact"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cardInfo"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginHorizontal="@dimen/very_far_margin"
+            app:cardBackgroundColor="?attr/colorSurface"
+            app:cardCornerRadius="@dimen/card_corner_radius"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingVertical="8dp">
+
+                <include
+                    android:id="@+id/includeMessage"
+                    layout="@layout/item_ui_message"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

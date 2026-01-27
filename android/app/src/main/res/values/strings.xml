@@ -1,0 +1,44 @@
+<resources>
+    <string name="app_name">Weather App</string>
+    <string name="condition_description">Weather condition image</string>
+    <string name="contact_us">Contact us</string>
+    <string name="today">Today</string>
+    <string name="tomorrow">Tomorrow</string>
+    <string name="this_week">This week</string>
+    <string name="hourly_weather_time_placeholder">10 am</string>
+    <string name="hourly_weather_temp_placeholder">18°C</string>
+    <string name="city_placeholder">--</string>
+    <string name="country_placeholder">--</string>
+    <string name="general_error">Something is wrong…</string>
+    <string name="network_error">Network error…</string>
+    <string name="local_storage_exception">Error saving data.</string>
+
+    <!-- Settings -->
+    <string name="wind_speed_title">Wind Speed</string>
+    <string name="temperature_title">Temperature</string>
+    <string name="unit_kmh">km/h</string>
+    <string name="unit_mph">mph</string>
+    <string name="unit_celsius">°C</string>
+    <string name="unit_fahrenheit">°F</string>
+
+    <!-- Error Messages -->
+    <string name="save_data_err">Fail to save data to local storage</string>
+    <string name="unknown_error">Unknown error</string>
+    <string name="setting_screen_title">Settings</string>
+    <string name="language_screen_title">Language</string>
+    <string name="theme_screen_title">Theme</string>
+    <string name="setting_general_title">General</string>
+    <string name="setting_unit_title">Unit of measurement</string>
+    <string name="setting_about_title">About</string>
+    <string name="save_setting_success">Settings saved successfully</string>
+    <string name="save_setting_error">Failed to save settings</string>
+
+    <!-- Language options -->
+    <string name="language_english">English</string>
+    <string name="language_vietnamese">Vietnamese</string>
+
+    <!-- Theme options -->
+    <string name="theme_light">Light</string>
+    <string name="theme_dark">Dark</string>
+    <string name="theme_system">System</string>
+</resources>

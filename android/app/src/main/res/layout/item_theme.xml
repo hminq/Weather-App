@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/item_theme"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/ivTheme"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:tint="?attr/colorPrimary"
+        android:layout_width="@dimen/icon_size"
+        android:layout_height="@dimen/icon_size"
+        android:tint="?attr/colorPrimary"
+        android:background="@drawable/bg_rounded"
+        android:padding="@dimen/icon_padding"
+        android:src="@drawable/ic_lightmode" />
+
+    <TextView
+        android:id="@+id/tvTheme"
+        app:layout_constraintBottom_toBottomOf="@id/ivTheme"
+        app:layout_constraintStart_toEndOf="@id/ivTheme"
+        app:layout_constraintTop_toTopOf="@id/ivTheme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="Theme"
+        android:textColor="?attr/colorOnSurface"
+        android:textSize="@dimen/body1_text_size" />
+
+    <TextView
+        android:id="@+id/tvThemeValue"
+        app:layout_constraintBottom_toBottomOf="@id/tvTheme"
+        app:layout_constraintEnd_toStartOf="@id/ivArrow1"
+        app:layout_constraintTop_toTopOf="@id/tvTheme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:text="Light"
+        android:textColor="?attr/colorOnSurfaceVariant"
+        android:textSize="@dimen/body1_text_size" />
+
+    <ImageView
+        android:id="@+id/ivArrow1"
+        app:layout_constraintBottom_toBottomOf="@id/tvThemeValue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvThemeValue"
+        app:tint="?attr/colorOnSurfaceVariant"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:src="@drawable/ic_arrow_right" />
+</androidx.constraintlayout.widget.ConstraintLayout>

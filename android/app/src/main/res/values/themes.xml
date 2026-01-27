@@ -1,0 +1,21 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Theme.WeatherApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">#18181B</item>
+        <item name="colorOnPrimary">#FFFFFF</item> <item name="colorPrimaryContainer">#F4F4F5</item>
+        <item name="colorOnPrimaryContainer">#18181B</item>
+        <item name="colorSecondary">#71717A</item>
+        <item name="colorOnSecondary">#FFFFFF</item>
+        <item name="colorSecondaryContainer">#FAFAFA</item>
+        <item name="colorOnSecondaryContainer">#18181B</item>
+        <item name="android:colorBackground">#F4F4F5</item>
+        <item name="colorSurface">#FFFFFF</item>
+        <item name="colorOnBackground">#09090B</item>
+        <item name="colorOnSurface">#09090B</item>
+        <item name="colorOnSurfaceVariant">#71717A</item>
+        <item name="colorError">#DC2626</item>
+        <item name="colorOnError">#FFFFFF</item>
+
+        <item name="colorOutline">#E4E4E7</item>
+        <item name="android:fontFamily">@font/project_font</item>
+    </style>
+</resources>

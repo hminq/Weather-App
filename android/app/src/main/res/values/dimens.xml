@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="screen_padding">16dp</dimen>
+    <dimen name="screen_padding_negative">-16dp</dimen>
+    <dimen name="label1_text_size">12sp</dimen>
+    <dimen name="label2_text_size">16sp</dimen>
+    <dimen name="label3_text_size">11sp</dimen>
+    <dimen name="body1_text_size">14sp</dimen>
+    <dimen name="body2_text_size">16sp</dimen>
+    <dimen name="body3_text_size">12sp</dimen>
+    <dimen name="title1_text_size">18sp</dimen>
+    <dimen name="title2_text_size">20sp</dimen>
+    <dimen name="headline1_text_size">24sp</dimen>
+    <dimen name="headline2_text_size">28sp</dimen>
+    <dimen name="headline3_text_size">50sp</dimen>
+    <dimen name="card_corner_radius">16dp</dimen>
+    <dimen name="card_padding">16dp</dimen>
+    <dimen name="message_card_padding">8dp</dimen>
+    <dimen name="space_divider_margin">24dp</dimen>
+    <dimen name="close_margin">8dp</dimen>
+    <dimen name="very_close_margin">4dp</dimen>
+    <dimen name="far_margin">16dp</dimen>
+    <dimen name="very_far_margin">48dp</dimen>
+    <dimen name="button_image_padding">12dp</dimen>
+    <dimen name="icon_padding">6dp</dimen>
+    <dimen name="icon_size">36dp</dimen>
+    <dimen name="small_icon_size">24dp</dimen>
+    <dimen name="hourly_item_size">84dp</dimen>
+    <dimen name="hourly_temp_width">100dp</dimen>
+    <dimen name="toggle_indicator_radius">12dp</dimen>
+</resources>

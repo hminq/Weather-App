@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/itemTwitter"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:clickable="true"
+        android:focusable="true">
+
+        <ImageView
+            android:id="@+id/ivTwitter"
+            android:layout_width="@dimen/icon_size"
+            android:layout_height="@dimen/icon_size"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:src="@drawable/ic_twitter"
+            android:padding="@dimen/icon_padding"
+            android:background="@drawable/bg_rounded"
+            android:tint="?attr/colorPrimary"/>
+
+        <androidx.constraintlayout.helper.widget.Flow
+            android:id="@+id/flowTwitter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@id/ivTwitter"
+            app:layout_constraintStart_toEndOf="@id/ivTwitter"
+            app:layout_constraintBottom_toBottomOf="@id/ivTwitter"
+            android:layout_marginStart="@dimen/far_margin"
+            android:orientation="vertical"
+            app:flow_horizontalAlign="start"
+            app:constraint_referenced_ids="tvTwitterTitle, tvTwitterValue"/>
+
+        <TextView
+            android:id="@+id/tvTwitterTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Twitter"
+            android:textColor="?attr/colorOnSurfaceVariant"
+            android:textSize="@dimen/label1_text_size"/>
+
+        <TextView
+            android:id="@+id/tvTwitterValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="\@ihminq"
+            android:textColor="?attr/colorOnSurface"
+            android:textSize="@dimen/body1_text_size"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

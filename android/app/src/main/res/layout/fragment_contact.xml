@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/itemGithub"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".presentation.ContactFragment"
+        android:padding="@dimen/screen_padding">
+
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="32dp"
+            android:src="@drawable/ic_arrow_left"
+            android:scaleType="centerInside"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:backgroundTint="?attr/colorOnSurfaceVariant"
+            android:padding="@dimen/button_image_padding"/>
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@id/btnBack"
+            app:layout_constraintBottom_toBottomOf="@id/btnBack"
+            app:layout_constraintStart_toEndOf="@id/btnBack"
+            android:layout_marginStart="@dimen/far_margin"
+            android:text="Contact Us"
+            android:textStyle="bold"
+            android:textSize="@dimen/title2_text_size"
+            android:textColor="?attr/colorOnBackground"/>
+
+        <TextView
+            android:id="@+id/tvGeneralTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvTitle"
+            android:layout_marginTop="24dp"
+            android:text="Social Media"
+            android:textSize="@dimen/title1_text_size"
+            android:textColor="?attr/colorOnBackground"/>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardSocial"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tvGeneralTitle"
+            android:layout_marginVertical="@dimen/close_margin"
+            app:cardBackgroundColor="?attr/colorSurface"
+            app:cardCornerRadius="@dimen/card_corner_radius">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="@dimen/card_padding"
+                android:divider="@drawable/space_divider"
+                android:showDividers="middle">
+
+                <include
+                    android:id="@+id/includeEmail"
+                    layout="@layout/item_email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <include
+                    android:id="@+id/includeGithub"
+                    layout="@layout/item_github"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <include
+                    android:id="@+id/includeTwitter"
+                    layout="@layout/item_twitter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <include
+                    android:id="@+id/includeInstagram"
+                    layout="@layout/item_instagram"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

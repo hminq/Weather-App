@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Weather App</string>
+    <string name="condition_description">Ảnh điều kiện thời tiết</string>
+    <string name="contact_us">Liên hệ</string>
+    <string name="today">Hôm nay</string>
+    <string name="tomorrow">Ngày mai</string>
+    <string name="this_week">Tuần này</string>
+    <string name="hourly_weather_time_placeholder">10 am</string>
+    <string name="hourly_weather_temp_placeholder">18°C</string>
+    <string name="city_placeholder">--</string>
+    <string name="country_placeholder">--</string>
+    <string name="general_error">Có lỗi xảy ra…</string>
+    <string name="network_error">Lỗi mạng…</string>
+    <string name="local_storage_exception">Lỗi khi lưu dữ liệu</string>
+    <string name="wind_speed_title">Tốc độ gió</string>
+    <string name="temperature_title">Nhiệt độ</string>
+    <string name="unit_kmh">km/h</string>
+    <string name="unit_mph">mph</string>
+    <string name="unit_celsius">°C</string>
+    <string name="unit_fahrenheit">°F</string>
+    <string name="save_data_err">Lỗi khi lưu dữ liệu</string>
+    <string name="unknown_error">Lỗi</string>
+    <string name="setting_screen_title">Cài đặt</string>
+    <string name="language_screen_title">Ngôn ngữ</string>
+    <string name="theme_screen_title">Giao diện</string>
+    <string name="setting_general_title">Chung</string>
+    <string name="setting_unit_title">Đơn vị đo</string>
+    <string name="setting_about_title">Về chúng tôi</string>
+    <string name="save_setting_success">Lưu cài đặt thành công</string>
+    <string name="save_setting_error">Lưu cài đặt thất bại</string>
+    <string name="language_english">Tiếng Anh</string>
+    <string name="language_vietnamese">Tiếng Việt</string>
+    <string name="theme_light">Sáng</string>
+    <string name="theme_dark">Tối</string>
+    <string name="theme_system">Hệ thống</string>
+</resources>
